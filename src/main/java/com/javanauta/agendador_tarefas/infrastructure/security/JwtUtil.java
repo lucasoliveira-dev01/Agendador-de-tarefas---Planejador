@@ -1,4 +1,5 @@
-package com.javanauta.agendadortarefas.infrastructure.security;
+
+package com.javanauta.agendador_tarefas.infrastructure.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

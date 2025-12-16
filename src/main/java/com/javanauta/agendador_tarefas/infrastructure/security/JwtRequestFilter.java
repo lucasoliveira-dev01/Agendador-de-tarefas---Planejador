@@ -1,4 +1,6 @@
-package com.javanauta.usuario.infrastructure.security;
+
+package com.javanauta.agendador_tarefas.infrastructure.security;
+
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -16,11 +18,11 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     // Define propriedades para armazenar instâncias de JwtUtil e UserDetailsService
-    private final com.javanauta.agendadortarefas.infrastructure.security.JwtUtil jwtUtil;
-    private final com.javanauta.usuario.infrastructure.security.UserDetailsServiceImpl userDetailsService;
+    private final JwtUtil jwtUtil;
+    private final UserDetailsServiceImpl userDetailsService;
 
     // Construtor que inicializa as propriedades com instâncias fornecidas
-    public JwtRequestFilter(com.javanauta.agendadortarefas.infrastructure.security.JwtUtil jwtUtil, com.javanauta.usuario.infrastructure.security.UserDetailsServiceImpl userDetailsService) {
+    public JwtRequestFilter(JwtUtil jwtUtil, UserDetailsServiceImpl userDetailsService) {
         this.jwtUtil = jwtUtil;
         this.userDetailsService = userDetailsService;
     }

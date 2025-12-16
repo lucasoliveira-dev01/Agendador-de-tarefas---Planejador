@@ -1,4 +1,4 @@
-package com.javanauta.usuario.infrastructure.security;
+package com.javanauta.agendador_tarefas.infrastructure.security;
 
 
 import com.javanauta.agendador_tarefas.business.dto.UsuarioDTO;
