@@ -1,7 +1,7 @@
 package com.javanauta.agendador_tarefas.controller;
 
 import com.javanauta.agendador_tarefas.business.TarefasService;
-import com.javanauta.agendador_tarefas.business.dto.TarefasDTO;
+import com.javanauta.agendador_tarefas.business.dto.TarefasDTORecord;
 import com.javanauta.agendador_tarefas.infrastructure.enums.StatusNotificacaoEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,14 +19,14 @@ public class TarefasController {
     private final TarefasService tarefasService;
 
     @PostMapping
-    public ResponseEntity<TarefasDTO> gravarTarefas(@RequestBody TarefasDTO dto,
+    public ResponseEntity<TarefasDTORecord> gravarTarefas(@RequestBody TarefasDTORecord dto,
                                                     @RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(tarefasService.gravarTarefa(token, dto));
 
     }
 
     @GetMapping("/eventos")
-    public ResponseEntity<List<TarefasDTO>> buscaListaDeTarefasPorPeriodo(
+    public ResponseEntity<List<TarefasDTORecord>> buscaListaDeTarefasPorPeriodo(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicial,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataFinal) {
 
@@ -35,8 +35,8 @@ public class TarefasController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TarefasDTO>> buscaTarefasPorEmail(@RequestHeader("Authorization") String token) {
-        List<TarefasDTO> tarefas = tarefasService.buscaTarefasPorEmail(token);
+    public ResponseEntity<List<TarefasDTORecord>> buscaTarefasPorEmail(@RequestHeader("Authorization") String token) {
+        List<TarefasDTORecord> tarefas = tarefasService.buscaTarefasPorEmail(token);
         return ResponseEntity.ok(tarefas);
     }
 
@@ -48,12 +48,12 @@ public class TarefasController {
     }
 
     @PatchMapping
-    public ResponseEntity<TarefasDTO> alteraStatusNotificação(@RequestParam("status") StatusNotificacaoEnum status,
+    public ResponseEntity<TarefasDTORecord> alteraStatusNotificação(@RequestParam("status") StatusNotificacaoEnum status,
                                                               @RequestParam("id") String id) {
         return ResponseEntity.ok(tarefasService.alteraStatus(status, id));
     }
     @PutMapping
-    public ResponseEntity<TarefasDTO> updateTarefas(@RequestBody TarefasDTO dto, @RequestParam("id")String id){
+    public ResponseEntity<TarefasDTORecord> updateTarefas(@RequestBody TarefasDTORecord dto, @RequestParam("id")String id){
         return ResponseEntity.ok(tarefasService.updateTarefas(dto, id));
     }
 
